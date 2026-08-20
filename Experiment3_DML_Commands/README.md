@@ -47,123 +47,265 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
 --
--- Paste Question 1 here
+Write a SQL query to determine the age group of value1 in the Calculations table as 'Child' if it is less than 13, 'Teen' if it is between 13 and 19, and 'Adult' if it is 20 or older.
 
-```sql
--- Paste your SQL code below for Question 1
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          INTEGER     0                       1
+1           value1      REAL        0                       0
+2           value2      REAL        0                       0
+3           base        INTEGER     0                       0
+4           exponent    INTEGER     0                       0
+5           number      REAL        0                       0
+6           decimal     REAL        0                       0
+
 ```
+SELECT id,value1,
+CASE
+WHEN value1 < 13 THEN 'Child'
+WHEN value1 BETWEEN 13 AND 19
+THEN 'Teen'
+ELSE 'Adult'
+END AS age_group
+FROM Calculations;
+
+```
+
 
 **Output:**
 
-![Output1](output.png)
+
+<img width="1128" height="472" alt="image" src="https://github.com/user-attachments/assets/a3675d32-a17f-47b3-b75b-4dc82721e14a" />
+
 
 **Question 2**
----
--- Paste Question 2 here
 
-```sql
--- Paste your SQL code below for Question 2
+Write a SQL query to retrieve the year, month, and day from the hiredate column in the emp table.
+
+```
+SELECT
+strftime('%Y',hiredate) AS Year,
+strftime('%m',hiredate) AS Month,
+strftime('%d',hiredate) AS Day
+FROM emp;
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1218" height="480" alt="image" src="https://github.com/user-attachments/assets/ab513051-8168-48d3-b824-51815713d428" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write a SQL query to Select all patients who were admitted for one day.
 
-```sql
--- Paste your SQL code below for Question 3
+Table: Patients
+
+name                  type
+--------------------  ----------
+patient_id            INT
+first_name            VARCHAR(50)
+last_name             VARCHAR(50)
+date_of_birth         DATE
+admission_date        DATE
+discharge_date        DATE
+doctor_id             INT
+
+```
+SELECT patient_id,first_name,
+admission_date, discharge_date
+FROM Patients
+WHERE admission_date = 
+discharge_date;
+
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1162" height="451" alt="image" src="https://github.com/user-attachments/assets/5ab6eaf3-cd1c-4dd4-b43d-2c59acdf95fc" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to calculate the absolute value of the value1 column from the Calculations table.
 
-```sql
--- Paste your SQL code below for Question 4
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           id          INTEGER     0                       1
+1           value1      REAL        0                       0
+2           value2      REAL        0                       0
+3           base        INTEGER     0                       0
+4           exponent    INTEGER     0                       0
+5           number      REAL        0                       0
+6           decimal     REAL        0                       0
+
 ```
+SELECT id,value1,ABS(value1) AS
+absolute_value
+FROM Calculations;
+```
+ 
 
 **Output:**
 
-![Output4](output.png)
+<img width="1198" height="417" alt="image" src="https://github.com/user-attachments/assets/f410e643-2c6b-48a7-9c7d-2bbe0a35d431" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to Delete customers from 'customer' table where 'CUST_NAME' contains the substring 'Holmes'.
 
-```sql
--- Paste your SQL code below for Question 5
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000
+
+```
+DELETE from customer
+where CUST_NAME LIKE '%Holmes%';
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1221" height="670" alt="image" src="https://github.com/user-attachments/assets/27da209e-b914-45fa-afca-aeba35b1eb49" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL statement to Find the salesmen with all information who gets the commission within a range of 0.12 and 0.14.
 
-```sql
--- Paste your SQL code below for Question 6
+salesman table
+
+cid         name         type        notnull     dflt_value  pk
+----------  -----------  ----------  ----------  ----------  ----------
+0           salesman_id  numeric(5)    0                       1
+1           name         varchar(30)   0                       0
+2           city         varchar(15)   0                       0
+3           commission   decimal(5,2)  0                       0
+
 ```
+select *
+from salesman
+where commission  BETWEEN 0.12 AND 0.14;
+```
+
 
 **Output:**
 
-![Output6](output.png)
+<img width="1203" height="595" alt="image" src="https://github.com/user-attachments/assets/cd2f0e8d-b9f3-46e2-bacd-73ed55b7a315" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to delete a doctor from Doctors table whose Specialization is 'Pediatrics' and First name is 'Michael'.
 
-```sql
--- Paste your SQL code below for Question 7
+Sample table: Doctors
+
+attributes: doctor_id, first_name, last_name, specialization
+
+```
+delete from Doctors
+where specialization = 'Pediatrics'
+AND first_name = 'Michael'
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1176" height="489" alt="image" src="https://github.com/user-attachments/assets/e35ef1f9-8636-4a29-bc6b-5504372b5e88" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write a SQL statement to increase the salary of employees under the department 40, 90 and 110 according to the company rules.
 
-```sql
--- Paste your SQL code below for Question 8
+Salary will be increased by 25% for the department 40, 15% for department 90 and 10% for the department 110 and the rest of the departments will remain same.
+
+
+Employees table
+
+---------------
+employee_id
+first_name
+last_name
+email
+phone_number
+hire_date
+job_id
+salary
+commission_pct
+manager_id
+department_id 
+
+```
+update Employees
+set salary = case
+when department_id = 40 then
+cast (round (salary * 1.25) as integer)
+when department_id = 90 then
+cast (round(salary * 1.15) as integer) 
+when department_id = 110 then
+cast (round(salary * 1.10) as integer) 
+else salary
+end;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1201" height="571" alt="image" src="https://github.com/user-attachments/assets/1e2df904-7f37-4452-b641-cd1e5b921fbd" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to Delete customers from 'customer' table where 'GRADE' is exactly 2.
 
-```sql
--- Paste your SQL code below for Question 9
+ 
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |        6000.00 |BBBBSBB  | A008       |
 ```
+delete from customer
+where GRADE = 2;
+```
+
+
 
 **Output:**
 
-![Output9](output.png)
+<img width="536" height="338" alt="image" src="https://github.com/user-attachments/assets/e04ab700-a711-4f8a-8559-7a5bf72378c2" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL statement to double the availability of the product with product_id 1.
 
-```sql
--- Paste your SQL code below for Question 10
+
+products table
+
+---------------
+product_id
+product_name
+category_id
+availability 
+
+```
+update products
+set availability = availability * 2
+where product_id = 1;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1195" height="366" alt="image" src="https://github.com/user-attachments/assets/75dbd0c6-3e45-4cc6-b4fe-bb4f1134f049" />
+
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
