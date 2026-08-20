@@ -105,123 +105,230 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Create a table named Products with the following constraints:
+ProductID as INTEGER should be the primary key.
+ProductName as TEXT should be unique and not NULL.
+Price as REAL should be greater than 0.
+StockQuantity as INTEGER should be non-negative.
 
-```sql
--- Paste your SQL code below for Question 1
+```
+create table Products(
+       ProductID  INTEGER primary key,
+       ProductName  TEXT  unique  not NULL,
+       Price  REAL CHECK (Price > 0),
+       StockQuantity  INTEGER CHECK (StockQuantity >= 0)
+
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="595" height="194" alt="image" src="https://github.com/user-attachments/assets/6e70daab-3ead-41dd-aa45-2e0ef4e58af5" />
+
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Create a table named Departments with the following columns:
 
-```sql
--- Paste your SQL code below for Question 2
+DepartmentID as INTEGER
+DepartmentName as TEXT
+
+```
+create table Departments(
+       DepartmentID  INTEGER,
+       DepartmentName  TEXT 
+
+
+
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+
+<img width="603" height="229" alt="image" src="https://github.com/user-attachments/assets/782c6aeb-b774-451a-bebc-d45eacc29079" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write a SQL query to Rename the "city" column to "location" in the "customer" table.
 
-```sql
--- Paste your SQL code below for Question 3
+Sample table: customer
+
+ customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
+
+
+
+```
+Alter table customer
+Rename column city to location;
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1215" height="456" alt="image" src="https://github.com/user-attachments/assets/9c4401b5-1486-44f8-9b32-cc974efd45e9" />
+
 
 **Question 4**
----
--- Paste Question 4 here
 
-```sql
--- Paste your SQL code below for Question 4
+
+Create a table named Customers with the following columns:
+
+CustomerID as INTEGER
+Name as TEXT
+Email as TEXT
+JoinDate as DATETIME
+
+```
+create table customers(
+       CustomerID  INTEGER,
+       Name  TEXT,
+       Email  TEXT,
+       JoinDate DATETIME 
+
+
+
+);
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="601" height="273" alt="image" src="https://github.com/user-attachments/assets/fd8ade76-f1be-4491-9730-89a10372c17c" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
 
-```sql
--- Paste your SQL code below for Question 5
+Insert the below data into the Books table, allowing the Publisher and Year columns to take their default values.
+
+ISBN             Title                 Author
+---------------  --------------------  ---------------
+978-6655443321   Big Data Analytics    Karen Adams
+
+Note: The Publisher and Year columns will use their default values.
+
+```
+insert into Books(ISBN,Title,Author)
+values('978-6655443321','Big Data Analytics','Karen Adams');
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="1209" height="436" alt="image" src="https://github.com/user-attachments/assets/3c54ed9b-b330-4a61-bb1f-b26ca83367be" />
 
 **Question 6**
 ---
--- Paste Question 6 here
+Create a table named Tasks with the following columns:
 
-```sql
--- Paste your SQL code below for Question 6
+TaskID as INTEGER
+TaskName as TEXT
+DueDate as DATE
+
+```
+create table Tasks(
+       TaskID INTEGER,
+       TaskName  TEXT,
+       DueDate  DATE 
+
+);
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1180" height="472" alt="image" src="https://github.com/user-attachments/assets/8206d6ce-ed0c-4106-8df4-fcc975621c36" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
 
-```sql
--- Paste your SQL code below for Question 7
+Insert the below data into the Customers table, allowing the City and ZipCode columns to take their default values.
+
+CustomerID  Name          Address
+----------  ------------  ----------
+304         Peter Parker  Spider St      
+
+Note: The City and ZipCode columns will use their default values.
+
+ ```
+insert into Customers(CustomerID, Name, Address) 
+values(304,'Peter Parker','Spider St');
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1180" height="441" alt="image" src="https://github.com/user-attachments/assets/376eeef2-df80-48b3-b939-bb45f274fa30" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
-
-```sql
--- Paste your SQL code below for Question 8
+Write an SQL Query to add the attributes designation, net_salary, and dob to the Companies table with the following data types:
+designation as VARCHAR(50)
+net_salary as NUMBER
+dob as DATE
 ```
+Alter table Companies
+add column designation  varchar(50); 
+Alter table Companies
+add column net_salary  number; 
+Alter table Companies
+add column  dob  date;
+```
+
 
 **Output:**
 
-![Output8](output.png)
+<img width="602" height="259" alt="image" src="https://github.com/user-attachments/assets/46444ee3-0a55-4fcd-b38d-0bd6c0c42f96" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL Query for inserting the below values in the table Customers
 
-```sql
--- Paste your SQL code below for Question 9
+ID               NAME             AGE  ADDRESS     SALARY      
+---------------  ---------------  ---  ----------  ----------  
+1                Ramesh           32   Ahmedabad   2000
+2                Khilan           25   Delhi       1500
+3                Kaushik          23   Kota        2000
+
+```
+insert into Customers values(1,'Ramesh',32,'Ahmedabad',2000);
+insert into Customers values(2,'Khilan',25,'Delhi',1500);
+insert into Customers values(3,'Kaushik',23,'Kota',2000);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="602" height="197" alt="image" src="https://github.com/user-attachments/assets/1492d77e-792f-40f8-be31-8e4bd2a34249" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Create a table named Department with the following constraints:
+DepartmentID as INTEGER should be the primary key.
+DepartmentName as TEXT should be unique and not NULL.
+Location as TEXT.
+```
 
-```sql
--- Paste your SQL code below for Question 10
+create table Department(
+       DepartmentID integer primary key,
+       DepartmentName text unique not null,
+       Location text
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="608" height="206" alt="image" src="https://github.com/user-attachments/assets/2177a18e-a851-4f2f-a92e-fbf168868df8" />
+
+
+RESULT
+Thus, the SQL queries to implement different types of constraints and DDL commands have been executed successfully.
+
 
 
 ## RESULT
